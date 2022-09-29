@@ -51,6 +51,35 @@ if ( ! function_exists( 'raketech_get_reviews' ) ) :
      *           'terms_and_conditions')
 	 */
 
+    if ( ! function_exists( 'raketech_get_final_url' ) ) :
+
+        /**
+         * Get last url after redirection
+         *
+         * @param string $url Nav menu item start element.
+         *
+         *
+         * @return string Final url after redirects.
+         */
+        function raketech_get_final_url($url) {
+            $curlhandle = curl_init();
+            curl_setopt($curlhandle, CURLOPT_URL, $url);
+            curl_setopt($curlhandle, CURLOPT_HEADER, 1);
+            curl_setopt($curlhandle, CURLOPT_USERAGENT, 'googlebot');
+            curl_setopt($curlhandle, CURLOPT_FOLLOWLOCATION, 0);
+            curl_setopt($curlhandle, CURLOPT_RETURNTRANSFER, 1);
+            $final = curl_exec($curlhandle);
+            if (preg_match('~Location: (.*)~i', $final, $lasturl)) {
+                $loc = trim($lasturl[1]);
+                return $loc;
+            } 
+            else {
+                return $loc= $url; 
+            }
+        }
+    endif;
+
+
     function raketech_get_reviews() {
         $request_reviews = wp_remote_get('https://alexpradas.com/wp-content/themes/Divi/raketechapi.json' );
         $response_reviews = wp_remote_retrieve_body($request_reviews);
