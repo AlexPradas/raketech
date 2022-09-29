@@ -2,3 +2,8 @@
     Raketech Plugin Styles
 */
 
+.home .wp-block-template-part, 
+.home .wp-container-6, 
+.home .wp-block-spacer {
+    display:none;
+}
