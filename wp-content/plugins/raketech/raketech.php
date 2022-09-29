@@ -193,3 +193,26 @@ if ( ! function_exists( 'raketech_show_reviews_table' ) ) :
     }
 endif;
 
+
+
+if ( ! function_exists( 'raketech_add_reviews_home_page' ) ) :
+
+	/**
+	 * Adds reviews table to the content of the home page
+	 *
+     * @param string $content.
+     *
+     *
+     * @return string Reviews Table.
+	 */
+    function raketech_add_reviews_home_page($content){
+        if (is_front_page()){
+            $content = raketech_show_reviews_table(raketech_get_reviews());
+            return $content;
+        }
+        return $content;
+    }
+endif;
+add_filter('the_content', 'raketech_add_reviews_home_page');
+
+
