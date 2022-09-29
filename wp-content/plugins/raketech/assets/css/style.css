@@ -110,3 +110,33 @@ body {
 .terms_and_conditions {
     text-align: center;
 }
+
+
+/**
+ * Adapt for mobile
+ */
+
+
+ @media (max-width: 768px) {
+    .raketech-header {
+        display: none;
+    }
+    .raketech-content {
+        flex-direction: column;
+        width: 90%;
+        margin: 20px auto;
+        border-radius: 20px;
+        background-color: white;
+
+    }
+    .raketech-content > * {
+        margin-bottom: 1em;
+    }
+    .raketech-plugin {
+        height: auto;
+    }
+    .raketech-reviews, 
+    .raketech-container {
+        background-color: #333333;
+    }
+}
