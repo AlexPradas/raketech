@@ -7,3 +7,106 @@
 .home .wp-block-spacer {
     display:none;
 }
+
+body {
+    background-color: #333333;
+}
+
+
+
+
+.raketech-plugin {
+    height: 100vh;
+    max-width: 1140px !important ;
+    margin: auto;
+    background-color: white;
+}
+
+.raketech-container {
+    flex-grow: 1;
+    align-items: stretch;
+    flex-direction: column;
+    display: flex;
+}
+
+.raketech-content, 
+.raketech-header {
+    justify-content: center;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.raketech-content{
+    margin: 0 0.75em;
+    padding: 2em 0;
+    border-bottom: 1px solid #aaaaaa;
+}
+
+.raketech-header {
+    background-color: #d29f36;
+    margin: 1em 1em;
+    padding: 0.75em;
+
+}
+.raketech-header p {
+    font-size: 0.6875em;
+}
+
+.logo-wrapper img {
+    width: 100%
+}
+.logo-wrapper a {
+    display: block;
+    text-align: center;
+    font-size: .6875em;
+    color: #0269bb;
+}
+
+.container-stars  i {
+    color: #d29f36;
+    min-height: 1em;
+    min-width: 1em;
+}
+.container-stars {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.raketech-content > *, 
+.raketech-header > * {
+    width: 250px;
+    margin: 0 10px;
+    text-align: center;
+}
+
+.bonus, 
+.features, 
+.terms-and-conditions {
+    font-size: .6875em;
+    text-align: center;
+}
+
+.features  i {
+    font-size: .6875em;
+    margin-right: .6875em;
+} 
+.raketech-button {
+    display: block;
+    width: 60%;
+    margin: auto;
+    background: #0e6d2b;
+    border: none;
+    padding: 1em 1em;
+    color: #eeeeee;
+    text-transform: uppercase;
+    border-radius: 0.75em;
+    cursor: pointer;
+    font-size: 0.75em;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+.terms_and_conditions {
+    text-align: center;
+}
