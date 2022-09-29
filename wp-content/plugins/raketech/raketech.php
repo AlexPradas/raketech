@@ -114,3 +114,82 @@ if ( ! function_exists( 'raketech_get_reviews' ) ) :
 endif;
 
 
+if ( ! function_exists( 'raketech_show_reviews_table' ) ) :
+
+	/**
+	 * Display the reviews table
+	 *
+     * @param array $raketech_array  array(
+     *           'position', 
+     *           'features', 
+     *           'logo',  
+     *           'brand_id', 
+     *           'rating', 
+     *           'bonus', 
+     *           'play_url', 
+     *           'terms_and_conditions')
+     *
+     *
+     * @return string template for displaying the reviews.
+	 */
+
+    function raketech_show_reviews_table($raketech_array){
+        
+        ob_start()
+    ?>
+        <div class="raketech-plugin">
+            <div class="raketech-reviews">
+                <div class="raketech-container">
+                    <div class="raketech-header">
+                        <p>Casino</p>  
+                        <p>Bonus</p>  
+                        <p>Features</p>  
+                        <p>Play</p>  
+                    </div>
+                    <?php for ($i = 0; $i < count($raketech_array); $i++) : ?>
+
+                        <div class="raketech-content">
+                            <div class="logo-wrapper">
+                                <img src="<?php echo $raketech_array[$i]['logo']; ?>" alt="">
+                                <a href="<?php echo $raketech_array[$i]['brand_id'];; ?>">Review</a>
+                            </div>
+                            <div class="stars-wrapper">
+                                <div class="container-stars">
+                                    <?php for ($k = 0 ; $k < $raketech_array[$i]['rating'];  $k++) : ?>
+                                        <i class="fas fa-star" aria-hidden="true"></i>
+                                    <?php endfor; ?>
+                                    <?php for ($k = $raketech_array[$i]['rating'];  $k < 5; $k++) : ?>
+                                        <i class="far fa-star" aria-hidden="true"></i>
+                                    <?php endfor; ?>
+                                </div>
+                                <div class="bonus">
+                                    <?php echo $raketech_array[$i]['bonus'] ?>
+                                </div>
+                            </div>
+                            <div class="features">
+                                <?php foreach ($raketech_array[$i]['features'] as $feature) : ?>
+                                    <div class="feature">
+                                        <i class="fa fa-clock"></i><?php echo $feature; ?>
+                                    </div>
+                                <?php endforeach ?>
+                            </div>
+                            <div class="cta-content">
+                                <a class="raketech-button" href="<?php echo $raketech_array[$i]['play_url'] ?>" rel="noopener nofollow" target="_blank"><strong>PLAY NOW</strong></a>
+                                <div class="terms-and-conditions">
+                                    <?php echo $raketech_array[$i]['terms_and_conditions']; ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endfor ?>
+                </div>
+            </div>
+        </div>
+
+
+    <?php   $reviews_display = ob_get_contents();
+        ob_end_clean();
+        //var_dump($reviews_display);
+        return $reviews_display;
+    }
+endif;
+
