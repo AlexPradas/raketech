@@ -86,7 +86,7 @@ if ( ! function_exists( 'raketech_get_reviews' ) ) :
         $data_reviews = json_decode( $response_reviews );
         $raketech_reviews = $data_reviews->{'toplists'}->{'575'};
         foreach ($raketech_reviews as $widget){
-            $logo= $widget->{'logo'};
+            $logo= raketech_get_final_url($widget->{'logo'});
             $brand_id =   $widget->{'brand_id'};
             $rating = $widget->{'info'}->{'rating'};
             $bonus = $widget->{'info'}->{'bonus'};
