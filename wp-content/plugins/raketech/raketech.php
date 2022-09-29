@@ -29,3 +29,59 @@ if ( ! function_exists( 'raketech_enqueue_style' ) ) :
 endif;
 
 add_action( 'wp_enqueue_scripts', 'raketech_enqueue_style' );
+
+
+
+
+
+if ( ! function_exists( 'raketech_get_reviews' ) ) :
+
+	/**
+	 * Get reviews array from Raketech API data.json. Only get those under the key 575, and ordered by the 'position' key
+	 *
+	 *
+	 * @return array  reviews array array(
+     *           'position', 
+     *           'features', 
+     *           'logo',  
+     *           'brand_id', 
+     *           'rating', 
+     *           'bonus', 
+     *           'play_url', 
+     *           'terms_and_conditions')
+	 */
+
+    function raketech_get_reviews() {
+        $request_reviews = wp_remote_get('https://alexpradas.com/wp-content/themes/Divi/raketechapi.json' );
+        $response_reviews = wp_remote_retrieve_body($request_reviews);
+        $data_reviews = json_decode( $response_reviews );
+        $raketech_reviews = $data_reviews->{'toplists'}->{'575'};
+        foreach ($raketech_reviews as $widget){
+            $logo= $widget->{'logo'};
+            $brand_id =   $widget->{'brand_id'};
+            $rating = $widget->{'info'}->{'rating'};
+            $bonus = $widget->{'info'}->{'bonus'};
+            $play_url = $widget->{'play_url'};
+            $terms_and_conditions = $widget->{'terms_and_conditions'};
+            $features = $widget->{'info'}->{'features'};
+            $position = $widget->{'position'};
+
+            $raketech_reviews_array[] = array(
+                'position' => $position, 
+                'features' => $features, 
+                'logo' => $logo,  
+                'brand_id' => $brand_id, 
+                'rating' => $rating, 
+                'bonus' => $bonus, 
+                'play_url' => $play_url, 
+                'terms_and_conditions' => $terms_and_conditions
+            );
+        }    
+
+        array_multisort( array_column($raketech_reviews_array, "position"), SORT_DESC, $raketech_reviews_array );
+        //var_dump($raketech_reviews_array);
+        return $raketech_reviews_array;
+    }
+endif;
+
+
