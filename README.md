@@ -8,4 +8,4 @@ You are free to use any method you prefer to mock the REST API and have your plu
 from the mock API with the sample JSON response.
 
 
-Plugin created: Raketech
+Plugin created for exercise: /wp-content/plugins/raketech
