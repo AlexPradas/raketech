@@ -151,8 +151,8 @@ if ( ! function_exists( 'raketech_show_reviews_table' ) ) :
 
                         <div class="raketech-content">
                             <div class="logo-wrapper">
-                                <img src="<?php echo $raketech_array[$i]['logo']; ?>" alt="">
-                                <a href="<?php echo $raketech_array[$i]['brand_id'];; ?>">Review</a>
+                                <a href="<?php echo $raketech_array[$i]['brand_id']; ?>"><img src="<?php echo $raketech_array[$i]['logo']; ?>" alt=""></a>
+                                <a href="<?php echo $raketech_array[$i]['brand_id']; ?>">Review</a>
                             </div>
                             <div class="stars-wrapper">
                                 <div class="container-stars">
