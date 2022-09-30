@@ -107,7 +107,7 @@ if ( ! function_exists( 'raketech_get_reviews' ) ) :
             );
         }    
 
-        array_multisort( array_column($raketech_reviews_array, "position"), SORT_DESC, $raketech_reviews_array );
+        array_multisort( array_column($raketech_reviews_array, "position"), SORT_ASC, $raketech_reviews_array );
         //var_dump($raketech_reviews_array);
         return $raketech_reviews_array;
     }
