@@ -88,9 +88,14 @@ body {
 }
 
 .features  i {
-    font-size: .6875em;
-    margin-right: .6875em;
+    font-size: .9em;
+    margin-right: .5em;
 } 
+.features{
+    max-width: 200px;
+    margin: auto;
+    text-align: left;
+}
 .raketech-button {
     display: block;
     width: 60%;
@@ -138,5 +143,8 @@ body {
     .raketech-reviews, 
     .raketech-container {
         background-color: #333333;
+    }
+    .features{
+        text-align: center;
     }
 }
